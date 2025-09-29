@@ -5,20 +5,20 @@ USE commandes;
 
 CREATE TABLE clients(
    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-   Nom VARCHAR(50) NOT NULL,
-   Prenom VARCHAR(50) NOT NULL,
-    Adresse VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL,
+   nom VARCHAR(50) NOT NULL,
+   prenom VARCHAR(50) NOT NULL,
+    adresse VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL
    
 );
 
 CREATE TABLE articles(
    id_article BIGINT PRIMARY KEY AUTO_INCREMENT,
-   Code_article VARCHAR(50) NOT NULL,
-   Libelle VARCHAR(50) NOT NULL,
-   Prix DECIMAL(15,2) NOT NULL,
+   code_article VARCHAR(50) NOT NULL,
+   libelle VARCHAR(50) NOT NULL,
+   prix DECIMAL(15,2) NOT NULL,
    UNIQUE(Code_article),
-   UNIQUE(Libelle)
+   UNIQUE(libelle)
 );
 
 CREATE TABLE commandes(
@@ -33,9 +33,9 @@ CREATE TABLE commandes(
 
 CREATE TABLE commande_ligne(
    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-   id_article BIGINT PRIMARY KEY AUTO_INCREMENT,
-   id_commandeINT,
-   quantité DECIMAL(10,2) NOT NULL,
-   FOREIGN KEY(Id_article) REFERENCES articles(Id_article),
+   id_article BIGINT NOT NULL,
+   id_commande BIGINT,
+   quantite DECIMAL(10,2) NOT NULL,
+   FOREIGN KEY(id_article) REFERENCES articles(id_article),
    FOREIGN KEY(id) REFERENCES commandes(id)
 );
